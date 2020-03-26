@@ -1,0 +1,48 @@
+<div class = "container-fluid">
+<!--Add FormGroup woth our model-->
+<p class="lead">Already a member? Please <a routerLink="/login">log in</a> instead.</p>
+
+<form [formGroup] = "CodevianForm" (submit)="register()>
+  <div class="form-group">
+    <label>name </label>
+    <input [class.is-invalid]="CodevianForm.get('name').invalid" type="text" class="form-control" formControlName="name">
+  </div>
+
+  <div class="form-group">
+    <label>email</label>
+    <input [class.is-invalid]="CodevianForm.get('email').invalid" type="text" class="form-control" formControlName="email">
+  </div>
+  <!--pwd-->
+  <div class="form-row">
+    <div class="form-group col">
+        <label>Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group col">
+        <label>Confirm Password</label>
+        <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+        </div>
+    </div>
+</div>
+
+
+  <!--pwd-->
+  <div class="form-group">
+    <label>phone number </label>
+    <input [class.is-invalid]="CodevianForm.get('phone').invalid"  type="text" class="form-control" formControlName="phone">
+    
+  </div>
+  <div class="form-group">
+    <label> Address </label>
+    <input  type="text" class="form-control" formControlName="address">
+  </div>
+<button type="submit" class="btn btn-primary">register</button>
+</form>
+</div>
